@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -14,7 +15,7 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', [BoardController::class, 'index']);
 Route::get('/', [PostController::class, 'index']);
 Route::post('/posts',  [PostController::class, 'store']);
 Route::get('/posts/create',  [PostController::class, 'create']);
