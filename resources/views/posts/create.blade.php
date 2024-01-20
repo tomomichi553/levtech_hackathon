@@ -5,7 +5,7 @@
         <title>Blog</title>
     </head>
     <body>
-        <h1>チーム開発会へようこそ！</h1>
+        <h1>掲示板の名前(要編集)</h1>
         <h2>投稿作成</h2>
         <form action="/posts" method="POST">
             @csrf
@@ -27,7 +27,7 @@
                     @endforeach
                 </select>
             </div>
-            <input type="submit" value="保存"/>
+            <input type="submit" value="投稿"/>
         </form>
         <div><a href="/">戻る</a></div>
     </body>
