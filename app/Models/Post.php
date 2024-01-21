@@ -16,6 +16,7 @@ class Post extends Model
         'body',
         'category_id',
         'user_id',
+        'board_id'
     ];
 
     public function getPaginateByLimit(int $limit_count = 5)

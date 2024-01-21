@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\BoardRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class BoardController extends Controller
@@ -23,8 +25,13 @@ class BoardController extends Controller
     public function store(Board $board, BoardRequest $request)
     {
         $input = $request['board'];
-        $board->industry_id = Auth::user()->industry->id;
+        $board->industry_id = Auth::user()->industry_id;
         $board->fill($input)->save();
-        return redirect('/boards' . $board->id);
+        return redirect('/' );
+    }
+    
+    public function show(Board $board,Post $post){
+        $query = $post->where('board_id', $board->id)->get();
+        return view('boards/show')->with(['board' => $board,'posts'=>$query]);
     }
 }
