@@ -1,11 +1,9 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-    </head>
-    <body>
-        <h1>掲示板作成</h1>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('掲示板作成') }}
+        </h2>
+    </x-slot>
         <form action="/boards" method="POST">
             @csrf
             <div>
@@ -17,5 +15,4 @@
             <input type="submit" value="作成"/>
         </form>
         <div><a href="/">戻る</a></div>
-    </body>
-</html>
+</x-app-layout>
