@@ -14,7 +14,7 @@ class Board extends Model
     protected $fillable = [
     'name',
     'user_id',
-    'industry_id'
+    'industry_id',
     ];
     
     //リレーション

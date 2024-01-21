@@ -12,15 +12,22 @@
         <div class = 'boards'>
             @foreach ($boards as $board)
                 <div class = 'board'>
+
+                    <h2 class='title'><a href="/boards/{{$board->id}}">{{ $board->name }}</a></h2>
+
                     <h2 class='title'>{{ $board->name }}</h2>
                     <div class="edit">
                         <a href="/boards/{{ $board->id }}/edit">edit</a>
                     </div>
+
                     <form action="/boards/{{ $board->id }}" id="form_{{ $board->id }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="button" onclick="deletePost({{ $board->id }})">delete</button> 
                     </form>
+
+
+
                 </div>
             @endforeach
         </div>

@@ -26,6 +26,7 @@
                 </select>
             </div>
             <input type="hidden" value={{ Auth::user()->id }} name="post[user_id]" >
+            <input type="hidden" value={{ $board->id }} name="post[board_id]" >
             <input type="submit" value="投稿" />
         </form>
         <div><a href="/">戻る</a></div>

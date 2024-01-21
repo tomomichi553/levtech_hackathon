@@ -1,0 +1,39 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{$board->name}}
+        </h2>
+    </x-slot>
+        <h1>投稿一覧</h1>
+        <div>
+            <p>掲示板：{{ $board->name }}</p>
+        </div>
+        <a href='/posts/create/{{ $board->id }}'>新規投稿</a>
+        <div>
+            @foreach ($posts as $post)
+                <div style='border:solid 1px; margin-bottom: 10px;'>
+                    <p>
+                        タイトル：<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                    </p>
+                    <p>カテゴリー：{{ $post->category->name }}</a></p>
+                    <p>本文：{{$post->body}}</p>
+                    <p>ユーザー：{{$post->user->name}}</p>
+                    <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{ $post->id }})">削除</button> 
+                    </form>
+                </div>
+            @endforeach
+        </div>
+        <script>
+            function deletePost(id) {
+                'use strict'
+        
+                if (confirm('この投稿を削除しますか')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
+</x-app-layout>
