@@ -17,11 +17,6 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [BoardController::class, 'index']);
-Route::get('/boards/create', [BoardController::class, 'create']);
-Route::post('/boards', [BoardController::class, 'store']);
-Route::get('/boards/{board}/edit', [PostController::class, 'edit']);
-Route::put('/boards', [PostController::class, 'update']);
 
 
 Route::get('/dashboard', function () {
@@ -45,10 +40,20 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::middleware('auth')->group(function(){
+    Route::get('/', [BoardController::class, 'index']);
+    Route::get('/boards/create', [BoardController::class, 'create']);
+    Route::post('/boards', [BoardController::class, 'store']);
+    Route::get('/boards/{board}',  [BoardController::class, 'show']);
+    Route::get('/boards/{board}/edit', [BoardController::class, 'edit']);
+  Route::put('/boards', [BoardController::class, 'update']);
+  });
+
+
 Route::middleware('auth')->group(function () {
-    Route::get('/', [PostController::class, 'index']);
+    //Route::get('/', [PostController::class, 'index']);
     Route::post('/posts',  [PostController::class, 'store']);
-    Route::get('/posts/create',  [PostController::class, 'create']);
+    Route::get('/posts/create/{board}',  [PostController::class, 'create']);
     Route::get('/posts/{post}',  [PostController::class, 'show']);
     Route::put('/posts/{post}',  [PostController::class, 'update']);
     Route::delete('/posts/{post}',  [PostController::class, 'delete']);
