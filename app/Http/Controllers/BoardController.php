@@ -23,8 +23,21 @@ class BoardController extends Controller
     public function store(Board $board, BoardRequest $request)
     {
         $input = $request['board'];
-        $board->industry_id = Auth::user()->industry->id;
+        $board->industry_id = \Auth::user()->industry_id;
         $board->fill($input)->save();
-        return redirect('/boards' . $board->id);
+        return redirect('/');
+    }
+    
+    public function edit(Board $board)
+    {
+    return view('boards.edit')->with(['board' => $board]);;
+    }
+    
+    public function update(Board $board,BoardRequest $request)
+    {
+        $input = $request['board'];
+        $board->industry_id = \Auth::user()->industry_id;
+        $board->fill($input)->save();
+        return redirect('/');
     }
 }

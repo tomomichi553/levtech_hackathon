@@ -55,7 +55,7 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
     
-    public function Industry()
+    public function industry()
     {
         return $this->belongsTo(Industry::class);
     }

@@ -13,6 +13,9 @@
             @foreach ($boards as $board)
                 <div class = 'board'>
                     <h2 class='title'>{{ $board->name }}</h2>
+                    <div class="edit">
+                        <a href="/boards/{{ $board->id }}/edit">edit</a>
+                    </div>
                 </div>
             @endforeach
         </div>
