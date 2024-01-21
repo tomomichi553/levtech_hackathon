@@ -8,10 +8,11 @@
     </head>
     <body>
         <h1>掲示板一覧</h1>
+        <a href='/boards/create'>作成</a>
         <div class = 'boards'>
             @foreach ($boards as $board)
                 <div class = 'board'>
-                    <h2 class='title'>{{ $post->title }}</h2>
+                    <h2 class='title'>{{ $board->name }}</h2>
                 </div>
             @endforeach
         </div>
