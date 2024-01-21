@@ -9,8 +9,13 @@ class Board extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+    'name',
+    'user_id',
+    'industry_id'
+    ];
     
-    
+    //リレーション
     public function User()
     {
         return $this->belongsTo(User::class);
