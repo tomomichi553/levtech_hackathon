@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
@@ -13,6 +15,7 @@ class Post extends Model
         'title',
         'body',
         'category_id',
+        'user_id',
     ];
 
     public function getPaginateByLimit(int $limit_count = 5)
