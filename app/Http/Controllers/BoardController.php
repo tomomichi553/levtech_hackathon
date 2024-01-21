@@ -42,10 +42,16 @@ class BoardController extends Controller
     }
     
     public function update(Board $board,BoardRequest $request)
-    {
-        $input = $request['board'];
-        $board->industry_id = \Auth::user()->industry_id;
-        $board->fill($input)->save();
-        return redirect('/');
-    }
+        {
+            $input = $request['board'];
+            $board->industry_id = \Auth::user()->industry_id;
+            $board->fill($input)->save();
+            return redirect('/');
+        }
+    
+    public function delete(Board $board)
+        {
+            $board->delete();
+            return redirect('/');
+        }
 }
