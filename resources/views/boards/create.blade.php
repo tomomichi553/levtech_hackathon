@@ -13,6 +13,7 @@
                 <input type="text" name="board[name]" placeholder="掲示板の名前" value="{{ old('board.name') }}"/>
                 <p class="name_error" style="color:red">{{ $errors->first('board.name') }}</p>
             </div>
+            <input type="hidden" value={{ Auth::user()->id }} name="board[user_id]" >
             <input type="submit" value="作成"/>
         </form>
         <div><a href="/">戻る</a></div>
