@@ -16,8 +16,23 @@
                     <div class="edit">
                         <a href="/boards/{{ $board->id }}/edit">edit</a>
                     </div>
+                    <form action="/boards/{{ $board->id }}" id="form_{{ $board->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{ $board->id }})">delete</button> 
+                    </form>
                 </div>
             @endforeach
         </div>
+        <script>
+            function deletePost(id) {
+                'use strict'
+        
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
+        `form_${id}`
     </body>
 </html>
