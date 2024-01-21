@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-    Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/', [PostController::class, 'index']);
     Route::post('/posts',  [PostController::class, 'store']);
     Route::get('/posts/create',  [PostController::class, 'create']);
